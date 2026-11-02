@@ -1,0 +1,28 @@
+<%- include("partials/header") %>
+<div class="page-heading"><div><div class="eyebrow">PLAYER SPACE</div><h1>ТВОЙ ПРОФИЛЬ<span class="green">.</span></h1><p>Управляй коллекцией и отслеживай достижения.</p></div><span class="status-pill"><span class="live-dot"></span> АККАУНТ ПОДКЛЮЧЁН</span></div>
+<section class="profile-layout">
+  <div class="profile-card">
+    <div class="profile-cover"></div>
+    <img class="profile-avatar" src="<%= currentUser.avatar_url || 'https://placehold.co/160x160/101713/56f2a6?text=D' %>" alt="Аватар">
+    <div class="profile-name"><h2><%= currentUser.display_name %></h2><span class="verified">✓ STEAM</span></div>
+    <p class="muted">SteamID64: <span class="mono"><%= currentUser.steam_id %></span></p>
+    <div class="profile-metrics"><div><strong><%= currentUser.virtual_points.toLocaleString("ru-RU") %></strong><span>ВИРТУАЛЬНЫЕ ОЧКИ</span></div><div><strong><%= items.length %></strong><span>ПРЕДМЕТОВ</span></div></div>
+    <div class="muted small">Очки нельзя купить, вывести или обменять на деньги.</div>
+  </div>
+  <div class="profile-main">
+    <div class="panel section-panel">
+      <div class="panel-heading"><div><div class="eyebrow">STARTER REWARD</div><h2>Стартовый набор</h2></div><span class="rarity-chip">БЕСПЛАТНО</span></div>
+      <p class="muted">Забери стартовый жетон и 250 виртуальных очков. Набор выдаётся один раз и не содержит случайных денежных или товарных призов.</p>
+      <form action="/claim-starter" method="post"><button class="btn btn-primary" type="submit">Получить стартовый набор <span>↗</span></button></form>
+    </div>
+    <div class="panel section-panel">
+      <div class="panel-heading"><div><div class="eyebrow">RECENT ITEMS</div><h2>Последние предметы</h2></div><a class="text-link" href="/collection">Вся коллекция ↗</a></div>
+      <% if (items.length) { %><div class="item-grid compact"><% items.slice(0,6).forEach(item => { %><div class="item-card"><div class="item-art"><span>✦</span></div><strong><%= item.item_name %></strong><small><%= item.rarity %></small></div><% }) %></div><% } else { %><div class="empty-state"><span>▧</span><strong>Коллекция пока пуста</strong><p>Получи стартовый набор, чтобы добавить первый предмет.</p></div><% } %>
+    </div>
+    <div class="panel section-panel">
+      <div class="panel-heading"><div><div class="eyebrow">ACTIVITY</div><h2>Последние действия</h2></div></div>
+      <% if (logs.length) { %><div class="activity-list"><% logs.forEach(log => { %><div class="activity-row"><span class="activity-mark">↗</span><div><strong><%= log.action.replaceAll("_"," ") %></strong><p><%= log.details %></p></div><time><%= new Date(log.created_at).toLocaleDateString("ru-RU") %></time></div><% }) %></div><% } else { %><p class="muted">Здесь появятся действия с аккаунтом.</p><% } %>
+    </div>
+  </div>
+</section>
+<%- include("partials/footer") %>

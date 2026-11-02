@@ -1,0 +1,7 @@
+<%- include("partials/header") %>
+<div class="page-heading"><div><div class="eyebrow">COMMUNITY RANKING</div><h1>РЕЙТИНГ<span class="green">.</span></h1><p>Участники с самыми большими коллекциями.</p></div><span class="status-pill">TOP 50</span></div>
+<div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>МЕСТО</th><th>УЧАСТНИК</th><th>ПРЕДМЕТЫ</th><th>ВИРТУАЛЬНЫЕ ОЧКИ</th></tr></thead><tbody>
+<% users.forEach((u,i) => { %><tr><td><span class="rank-number"><%= String(i+1).padStart(2,"0") %></span></td><td><div class="table-user"><img src="<%= u.avatar_url || 'https://placehold.co/64x64/101713/56f2a6?text=D' %>" alt=""><strong><%= u.display_name %></strong></div></td><td><%= u.items_count %></td><td><span class="green"><%= Number(u.virtual_points).toLocaleString("ru-RU") %></span></td></tr><% }) %>
+<% if (!users.length) { %><tr><td colspan="4" class="muted">Пока нет участников. Стань первым!</td></tr><% } %>
+</tbody></table></div></div>
+<%- include("partials/footer") %>

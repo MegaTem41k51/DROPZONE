@@ -1,0 +1,37 @@
+<%- include("partials/header") %>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="pulse"></span> CS2 COMMUNITY PLATFORM</div>
+    <h1>СОБИРАЙ.<br><span class="gradient-text">ИССЛЕДУЙ.</span><br>ПОПАДАЙ В ТОП.</h1>
+    <p class="hero-description">Твоя CS2-коллекция начинается здесь. Собирай виртуальные предметы, выполняй задания и поднимайся в рейтинге сообщества.</p>
+    <div class="hero-actions">
+      <% if (currentUser) { %><a href="/profile" class="btn btn-primary">Открыть профиль <span>↗</span></a><% } else { %><a href="/auth/steam" class="btn btn-primary">Продолжить через Steam <span>↗</span></a><% } %>
+      <a href="#features" class="btn btn-ghost">Исследовать платформу</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong><%= stats.users.toLocaleString("ru-RU") %></strong><span>УЧАСТНИКОВ</span></div>
+      <i></i><div><strong><%= stats.items.toLocaleString("ru-RU") %></strong><span>ПРЕДМЕТОВ В КОЛЛЕКЦИЯХ</span></div>
+      <i></i><div><strong>100%</strong><span>ВИРТУАЛЬНО</span></div>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div>
+    <div class="art-panel">
+      <div class="panel-top"><span class="live-dot"></span> DROPZONE COLLECTION <span class="panel-tag">SEASON 01</span></div>
+      <div class="weapon-art"><div class="weapon-glow"></div><div class="weapon-symbol">✦</div><div class="weapon-name">EMERALD<br>COLLECTION</div><div class="weapon-line"></div></div>
+      <div class="panel-bottom"><div><small>COLLECTION STATUS</small><strong>READY TO BUILD</strong></div><span class="rarity-chip">COMMUNITY</span></div>
+    </div>
+    <div class="floating-card float-top"><span class="float-icon">✧</span><div><b>Твоя коллекция</b><small>Начни собирать</small></div></div>
+    <div class="floating-card float-bottom"><span class="float-check">✓</span><div><b>Без депозитов</b><small>Только виртуальный прогресс</small></div></div>
+  </div>
+</section>
+<section id="features" class="section">
+  <div class="section-heading"><div><div class="eyebrow">ТВОЙ ПРОГРЕСС</div><h2>Больше, чем коллекция<span class="green">.</span></h2></div><p>Все достижения и предметы — в одном месте.</p></div>
+  <div class="feature-grid">
+    <a class="feature-card" href="/collection"><span class="feature-number">01 / COLLECTION</span><span class="feature-icon">▧</span><h3>Личная коллекция</h3><p>Собирай виртуальные предметы и следи за историей достижений.</p><span class="card-arrow">↗</span></a>
+    <a class="feature-card" href="/leaderboard"><span class="feature-number">02 / RANKING</span><span class="feature-icon">⌁</span><h3>Рейтинг игроков</h3><p>Сравнивай прогресс с участниками сообщества и поднимайся выше.</p><span class="card-arrow">↗</span></a>
+    <a class="feature-card" href="/profile"><span class="feature-number">03 / PROFILE</span><span class="feature-icon">◉</span><h3>Steam-профиль</h3><p>Авторизация через Steam и единый профиль для твоего прогресса.</p><span class="card-arrow">↗</span></a>
+  </div>
+</section>
+<section class="notice-strip"><span class="notice-icon">ⓘ</span><div><strong>DROPZONE — виртуальная платформа сообщества</strong><p>Здесь нет денежных депозитов, вывода средств или торговли скинами. Виртуальные очки и коллекционные отметки не имеют реальной стоимости.</p></div></section>
+<%- include("partials/footer") %>

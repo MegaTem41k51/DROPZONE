@@ -1,0 +1,4 @@
+<%- include("partials/header") %>
+<div class="page-heading"><div><div class="eyebrow">YOUR ITEMS</div><h1>МОЯ КОЛЛЕКЦИЯ<span class="green">.</span></h1><p>Все твои виртуальные предметы и достижения.</p></div><span class="status-pill"><%= items.length %> ПРЕДМЕТОВ</span></div>
+<% if (items.length) { %><div class="item-grid"><% items.forEach(item => { %><div class="item-card"><div class="item-art"><span>✦</span><small><%= item.rarity %></small></div><strong><%= item.item_name %></strong><small>Добавлен <%= new Date(item.obtained_at).toLocaleDateString("ru-RU") %></small></div><% }) %></div><% } else { %><div class="empty-state large"><span>▧</span><h2>Здесь пока ничего нет</h2><p>Перейди в профиль и получи стартовый набор.</p><a href="/profile" class="btn btn-primary">Открыть профиль ↗</a></div><% } %>
+<%- include("partials/footer") %>

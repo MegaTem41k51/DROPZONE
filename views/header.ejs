@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b0a">
+  <meta name="description" content="DROPZONE — виртуальная CS2-коллекция и игровые достижения.">
+  <title><%= title %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">D</span><span>DROP<span class="green">ZONE</span><small>CS2 COMMUNITY</small></span></a>
+  <nav class="nav">
+    <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>">Главная</a>
+    <a href="/leaderboard" class="<%= currentPath === '/leaderboard' ? 'active' : '' %>">Рейтинг</a>
+    <% if (currentUser) { %><a href="/collection">Коллекция</a><% } %>
+  </nav>
+  <div class="top-actions">
+    <% if (currentUser) { %>
+      <a class="user-chip" href="/profile"><img src="<%= currentUser.avatar_url || 'https://placehold.co/80x80/101713/56f2a6?text=D' %>" alt=""><span><%= currentUser.display_name %></span></a>
+      <% if (isAdmin) { %><a class="admin-link" href="/admin">ADMIN</a><% } %>
+      <form action="/logout" method="post"><button class="btn btn-ghost btn-small" type="submit">Выйти</button></form>
+    <% } else { %>
+      <a class="btn btn-steam" href="/auth/steam"><span class="steam-dot">◉</span> Войти через Steam</a>
+    <% } %>
+  </div>
+</header>
+<main class="page-shell">
